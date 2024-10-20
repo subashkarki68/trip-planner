@@ -1,0 +1,11 @@
+model Product {
+  id                String   @id @default(cuid()) @map("_id")
+  name              String
+  description       String
+  price             Float
+  availableQuantity Int
+  sellerId          String
+  seller            User     @relation(fields: [sellerId], references: [id])
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}

@@ -1,0 +1,5 @@
+model UserRole {
+  id    String @id @default(cuid()) @map("_id")
+  name  String @unique // e.g., Tourist, TourGuide, Advertiser, Seller, Admin
+  users User[]
+}

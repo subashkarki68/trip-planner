@@ -1,0 +1,23 @@
+model User {
+  id             String         @id @default(cuid()) @map("_id")
+  username       String         @unique
+  email          String         @unique
+  password       String
+  mobileNumber   String
+  nationality    String
+  dob            DateTime
+  job            String
+  role           UserRole       @relation(fields: [roleId], references: [id])
+  roleId         String
+  wallet         Float          @default(0)
+  loyaltyPoints  Int            @default(0)
+  profilePicture String?
+  termsAccepted  Boolean        @default(false)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  itineraries    Itinerary[]
+  complaints     Complaint[]
+  products       Product[]
+  notifications  Notification[]
+  Activity       Activity[]
+}

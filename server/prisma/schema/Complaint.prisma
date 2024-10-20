@@ -1,0 +1,11 @@
+model Complaint {
+  id         String    @id @default(cuid()) @map("_id")
+  title      String
+  body       String
+  status     String // e.g., pending, resolved
+  response   String?
+  resolvedAt DateTime?
+  createdAt  DateTime  @default(now())
+  userId     String
+  user       User      @relation(fields: [userId], references: [id])
+}

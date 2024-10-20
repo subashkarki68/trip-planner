@@ -1,0 +1,18 @@
+model Activity {
+  id            String   @id @default(cuid()) @map("_id")
+  name          String
+  description   String
+  date          DateTime
+  time          String
+  location      String
+  price         Float
+  category      String
+  tags          String[]
+  discounts     Float?
+  isBookingOpen Boolean
+  advertiserId  String
+  advertiser    User     @relation(fields: [advertiserId], references: [id])
+  isFlagged     Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}

@@ -1,0 +1,20 @@
+model Itinerary {
+  id             String   @id @default(cuid()) @map("_id")
+  title          String
+  description    String
+  activities     String[]
+  locations      String[]
+  timeline       String
+  duration       Int
+  tourLanguage   String
+  price          Float
+  availableDates String[]
+  accessibility  String
+  pickUpLocation String
+  tourGuideId    String
+  isActive       Boolean  @default(true)
+  isFlagged      Boolean  @default(false)
+  tourGuide      User     @relation(fields: [tourGuideId], references: [id])
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
